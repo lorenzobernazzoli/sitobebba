@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sito Bebba</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776; <!-- Codice per l'icona delle tre barre -->
+        </div>
+        <h1>Sito Bebba</h1>
+    </header>
+
+    <!-- Menu a sinistra (nascondi per default) -->
+    <nav id="menu">
+        <ul>
+            <li><a href="#me">Me</a></li>
+            <li><a href="#amiketti">Amiketti</a></li>
+            <li><a href="#carriera">La carriera</a></li>
+            <li><a href="#armadio">Armadio</a></li>
+        </ul>
+    </nav>
+
+    <!-- Corpo della pagina -->
+    <main>
+        <section class="full-screen-image">
+            <img src="tua-immagine.jpg" alt="Immagine a tutto schermo">
+        </section>
+    </main>
+
+    <script>
+        // Funzione per mostrare/nascondere il menu
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.classList.toggle("show");
+        }
+    </script>
+
+</body>
+</html>
