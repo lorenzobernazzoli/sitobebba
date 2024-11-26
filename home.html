@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sito Bebba</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        <h1>Sito Bebba</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- Menu laterale -->
+    <nav id="menu">
+        <div class="close-icon" onclick="closeMenu()">&times;</div>
+        <ul>
+            <li><a href="me.html">Me</a></li>
+            <li><a href="amiketti.html">Amiketti</a></li>
+            <li><a href="carriera.html">La carriera</a></li>
+            <li><a href="armadio.html">Armadio</a></li>
+        </ul>
+    </nav>
+
+    <!-- Corpo della pagina -->
+    <main>
+        <section class="intro-section">
+            <h2>Benvenuto nel Sito Bebba!</h2>
+            <p>Esplora le sezioni dal menu per saperne di più.</p>
+        </section>
+
+        <!-- Immagine a tutto schermo ma con altezza controllata e bordi stondati -->
+        <section class="home-image">
+            <img src="images/homescreen.png" alt="Homescreen" class="full-screen-image">
+        </section>
+    </main>
+
+    <script>
+        // Funzione per mostrare/nascondere il menu
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.add("show");
+        }
+
+        // Funzione per chiudere il menu
+        function closeMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.remove("show");
+        }
+
+        // Funzione per gestire il tema
+        function toggleTheme() {
+            const body = document.body;
+            const isDarkMode = body.classList.toggle("dark-mode");
+            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            updateToggleIcon(isDarkMode);
+        }
+
+        // Aggiorna l'icona del bottone in base al tema
+        function updateToggleIcon(isDarkMode) {
+            const toggleButton = document.querySelector(".theme-toggle");
+            toggleButton.textContent = isDarkMode ? "☀️" : "🌙";
+        }
+
+        // Applica il tema salvato
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+                updateToggleIcon(true);
+            } else {
+                updateToggleIcon(false);
+            }
+        }
+
+        // Applica il tema salvato all'avvio
+        applySavedTheme();
+    </script>
+
+    <style>
+        /* Tema generale scuro */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Scuro Tema */
+        .dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #1f1f1f;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        header h1 {
+            color: #00bcd4;
+        }
+
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Menu laterale */
+        nav {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Il menu è inizialmente nascosto */
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: #fff;
+            padding-top: 50px;
+            transition: left 0.3s ease-in-out; /* Animazione per apertura/chiusura */
+        }
+
+        nav.show {
+            left: 0; /* Quando viene aperto, il menu scorre a sinistra */
+        }
+
+        nav .close-icon {
+            font-size: 30px;
+            color: #fff;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li:hover {
+            background-color: #444;
+        }
+
+        /* Corpo della pagina */
+        main {
+            padding-top: 60px; /* Per fare spazio al header fisso */
+            text-align: center;
+            width: 100%;
+        }
+
+        /* Immagine a tutto schermo ma con altezza controllata e bordi stondati */
+        .home-image {
+            margin-top: 20px;
+            width: 100%;
+            height: auto;
+        }
+
+        .full-screen-image {
+            width: 100%;
+            height: auto;
+            object-fit: contain; /* Contenimento dell'immagine senza ritagliarla */
+            max-height: 60vh; /* Limitiamo l'altezza dell'immagine al 60% della finestra */
+            margin-bottom: 20px; /* Distanza dal contenuto sottostante */
+            border-radius: 15px; /* Aggiungi bordi stondati */
+        }
+
+        /* Menu visibile */
+        .show {
+            display: block;
+        }
+
+    </style>
+</body>
+</html>

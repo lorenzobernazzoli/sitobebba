@@ -3,43 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sito Bebba</title>
+    <title>Login - Sito Bebba</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script> <!-- Libreria per hashing -->
 </head>
 <body>
-
-    <!-- Header -->
-    <header>
-        <div class="menu-icon" onclick="toggleMenu()">
-            &#9776; <!-- Codice per l'icona delle tre barre -->
-        </div>
-        <h1>Sito Bebba</h1>
-    </header>
-
-    <!-- Menu a sinistra (nascondi per default) -->
-    <nav id="menu">
-        <ul>
-            <li><a href="#me">Me</a></li>
-            <li><a href="#amiketti">Amiketti</a></li>
-            <li><a href="#carriera">La carriera</a></li>
-            <li><a href="#armadio">Armadio</a></li>
-        </ul>
-    </nav>
-
     <!-- Corpo della pagina -->
     <main>
-        <section class="full-screen-image">
-            <img src="tua-immagine.jpg" alt="Immagine a tutto schermo">
+        <section class="login-container" id="login-container">
+            <div class="login-form" id="login-form">
+                <h2>Benvenuto!</h2>
+                <div id="comic-text" class="comic-text">Fermo infame! Se sei una persona autorizzata ti ho sicuramente detto la password, mettila oppure richi si arrabbierà</div>
+                <form onsubmit="handleLogin(event)">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="submit">Accedi</button>
+                </form>
+                <p id="error-message" class="error-message"></p>
+            </div>
+        </section>
+
+        <section class="login-images">
+            <img id="login-image1" class="login-image" src="images/richiLog1.png" alt="Login Image 1" style="display: block;">
+            <img id="login-image2" class="login-image" src="images/richiLog2.png" alt="Login Image 2" style="display: none;">
+            <img id="login-image3" class="login-image" src="images/richiLog3.png" alt="Login Image 3" style="display: none;">
+            <img id="login-image4" class="login-image" src="images/richiLog4.png" alt="Login Image 4" style="display: none;">
+        </section>
+
+        <section id="lock-section" class="lock-section" style="display: none;">
+            <h2><span style="color: red;">SPARISCI NON ACCETTIAMO INTRUSI QUI</span></h2>
+            <img src="images/lock.png" alt="Lock" class="lock-image">
         </section>
     </main>
 
     <script>
-        // Funzione per mostrare/nascondere il menu
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            menu.classList.toggle("show");
+        // Hash della password corretta (usa https://www.md5hashgenerator.com per calcolare il tuo hash)
+        const CORRECT_PASSWORD_HASH = "4e3c5f7986ff29364209827f0218d7db"; // Inserisci qui la tua password hashata
+
+        let attempts = 0; // Conta i tentativi di login
+
+        // Funzione per gestire il login
+        function handleLogin(event) {
+            event.preventDefault(); // Previene il refresh della pagina
+            const passwordInput = document.getElementById("password").value;
+            const errorMessage = document.getElementById("error-message");
+            const loginImage1 = document.getElementById("login-image1");
+            const loginImage2 = document.getElementById("login-image2");
+            const loginImage3 = document.getElementById("login-image3");
+            const loginImage4 = document.getElementById("login-image4");
+            const comicText = document.getElementById("comic-text");
+            const loginForm = document.getElementById("login-form");
+            const loginContainer = document.getElementById("login-container");
+            const lockSection = document.getElementById("lock-section");
+
+            // Calcola l'hash della password inserita
+            const passwordHash = CryptoJS.MD5(passwordInput).toString();
+
+            if (passwordHash === CORRECT_PASSWORD_HASH) {
+                // Reindirizza alla Home se la password è corretta
+                window.location.href = "home.html";
+            } else {
+                // Gestisce gli errori
+                attempts++;
+                if (attempts < 3) {
+                    // Cambia la foto e il fumetto in base ai tentativi
+                    switch (attempts) {
+                        case 1:
+                            loginImage1.style.display = "none";
+                            loginImage2.style.display = "block";
+                            comicText.textContent = "Ok dai un errore ci può' stare, metti la password che richi inizia a insospettirsi";
+                            break;
+                        case 2:
+                            loginImage2.style.display = "none";
+                            loginImage3.style.display = "block";
+                            comicText.textContent = "Sei sicuro di essere autorizzato? richi si sta arrabbiando, stai attento, ultima possibilità";
+                            comicText.style.color = "red";
+                            break;
+                    }
+                    // Mostra messaggio di errore
+                    errorMessage.textContent = "Password errata. Riprova.";
+                } else {
+                    // Blocco dopo 3 tentativi
+                    loginImage3.style.display = "none";
+                    loginImage4.style.display = "block";
+                    comicText.style.display = "none"; // Nascondi il fumetto
+                    loginForm.style.display = "none"; // Nascondi il form
+                    loginContainer.style.display = "none"; // Nascondi l'intero contenitore del login
+                    lockSection.style.display = "block"; // Mostra la sezione con il lucchetto
+                    
+                    // Cambia il tema a scuro
+                    document.body.classList.add('dark-theme'); 
+                }
+            }
         }
     </script>
 
+    <style>
+        /* Tema generale scuro */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Scuro Tema */
+        .dark-theme {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Contenitore login separato */
+        .login-container {
+            width: 50%;
+            padding: 40px;
+            text-align: center;
+            background: #1f1f1f;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            position: absolute;
+            left: 5%;
+            z-index: 1; /* Mantiene il login sopra le immagini */
+        }
+
+        .login-form h2 {
+            margin-bottom: 20px;
+            color: #00bcd4;
+        }
+
+        .login-form p {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        form button {
+            padding: 10px;
+            background: #00bcd4;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        form button:hover {
+            background: #0097a7;
+        }
+
+        .error-message {
+            margin-top: 15px;
+            color: #ff5252;
+            font-size: 14px;
+        }
+
+        /* Sezione per le immagini sulla destra */
+        .login-images {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 45%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Immagini di login */
+        .login-image {
+            width: 80%;
+            height: auto;
+            object-fit: cover;
+            margin: 10px 0;
+            display: none; /* Nasconde le immagini inizialmente */
+        }
+
+        /* Foto più grandi */
+        #login-image2, #login-image4 {
+            width: 100%;
+            height: auto;
+        }
+
+        #login-image4 {
+            max-height: 70%; /* Garantisce che l'immagine più grande non vada fuori dallo schermo */
+        }
+
+        /* Fumetto sopra al form */
+        .comic-text {
+            font-size: 18px;
+            color: #fff;
+            background-color: #00bcd4;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Sezione con il lucchetto (dopo 3 tentativi) */
+        .lock-section {
+            text-align: center;
+            color: red;
+        }
+
+        .lock-image {
+            width: 200px;
+            height: auto;
+        }
+
+        /* Disabilitare il bottone dopo 3 tentativi */
+        form button:disabled {
+            background: #888;
+            cursor: not-allowed;
+        }
+    </style>
 </body>
 </html>
