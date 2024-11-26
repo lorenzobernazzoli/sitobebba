@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Sito Bebba</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script> <!-- Libreria per hashing -->
+    <script src="https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js"></script>
+    <!-- Libreria per hashing -->
 </head>
+
 <body>
     <!-- Corpo della pagina -->
     <main>
@@ -89,9 +92,9 @@
                     loginForm.style.display = "none"; // Nascondi il form
                     loginContainer.style.display = "none"; // Nascondi l'intero contenitore del login
                     lockSection.style.display = "block"; // Mostra la sezione con il lucchetto
-                    
+
                     // Cambia il tema a scuro
-                    document.body.classList.add('dark-theme'); 
+                    document.body.classList.add('dark-theme');
                 }
             }
         }
@@ -99,6 +102,7 @@
 
     <style>
         /* Tema generale scuro */
+        
         body {
             font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
@@ -112,14 +116,14 @@
             position: relative;
             transition: background-color 0.3s ease;
         }
-
         /* Scuro Tema */
+        
         .dark-theme {
             background-color: #121212;
             color: #e0e0e0;
         }
-
         /* Contenitore login separato */
+        
         .login-container {
             width: 50%;
             padding: 40px;
@@ -129,31 +133,32 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
             position: absolute;
             left: 5%;
-            z-index: 1; /* Mantiene il login sopra le immagini */
+            z-index: 1;
+            /* Mantiene il login sopra le immagini */
         }
-
+        
         .login-form h2 {
             margin-bottom: 20px;
             color: #00bcd4;
         }
-
+        
         .login-form p {
             margin-bottom: 20px;
         }
-
+        
         form {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-
+        
         form input {
             padding: 10px;
             border: none;
             border-radius: 5px;
             font-size: 16px;
         }
-
+        
         form button {
             padding: 10px;
             background: #00bcd4;
@@ -164,18 +169,18 @@
             cursor: pointer;
             transition: background 0.3s ease;
         }
-
+        
         form button:hover {
             background: #0097a7;
         }
-
+        
         .error-message {
             margin-top: 15px;
             color: #ff5252;
             font-size: 14px;
         }
-
         /* Sezione per le immagini sulla destra */
+        
         .login-images {
             position: absolute;
             top: 0;
@@ -187,27 +192,30 @@
             justify-content: center;
             align-items: center;
         }
-
         /* Immagini di login */
+        
         .login-image {
             width: 80%;
             height: auto;
             object-fit: cover;
             margin: 10px 0;
-            display: none; /* Nasconde le immagini inizialmente */
+            display: none;
+            /* Nasconde le immagini inizialmente */
         }
-
         /* Foto più grandi */
-        #login-image2, #login-image4 {
+        
+        #login-image2,
+        #login-image4 {
             width: 100%;
             height: auto;
         }
-
+        
         #login-image4 {
-            max-height: 70%; /* Garantisce che l'immagine più grande non vada fuori dallo schermo */
+            max-height: 70%;
+            /* Garantisce che l'immagine più grande non vada fuori dallo schermo */
         }
-
         /* Fumetto sopra al form */
+        
         .comic-text {
             font-size: 18px;
             color: #fff;
@@ -219,23 +227,24 @@
             width: 100%;
             box-sizing: border-box;
         }
-
         /* Sezione con il lucchetto (dopo 3 tentativi) */
+        
         .lock-section {
             text-align: center;
             color: red;
         }
-
+        
         .lock-image {
             width: 200px;
             height: auto;
         }
-
         /* Disabilitare il bottone dopo 3 tentativi */
+        
         form button:disabled {
             background: #888;
             cursor: not-allowed;
         }
     </style>
 </body>
+
 </html>
