@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pippi</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Pippi</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- Contenuto principale -->
+    <main>
+        <section class="friend-detail">
+            <img src="images/Pippi.png" alt="Pippi" class="friend-detail-image">
+            <div class="friend-description">
+                <h2>Pippi
+                    <3</h2>
+                        <p>
+                            Peter - Pippi - sbugba - Sbadubi - Pip - Burro - sBURA - PiPPiRipPi - pietrino - pietrone - pie - Buralds - pistolero della noche - palestraBoy
+                        </p>
+                        <p>
+                            è ENORME, la sua trama si divide in: prima e dopo la scoperta della palestra. Ovvero in "Good Peter" e "Evil Peter". E' un esemplare davvero unico in grado di passare fino alle 7 ore giornaliere in palestra, non apre mai nessun libro ma allo stesso tempo
+                            non ha nessun voto rosso, non ha mai soldi e devi pagargli tutto tu ma allo stesso tempo riesce a trovare 50euro per l'entrata in quella serata 14+. Dopo la scoperta delle 08 la sua vita cambia radicalmente, nessuna scoperta
+                            fu mai così di impatto e immersiva per un ragazzo di questo calibro, tuttavia.. rimane sfortunato in amore nonostante il suo fan club si dica raggiunga i 300 membri. Tutti inferiori ai 15 anni.
+                        </p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const isDarkMode = body.classList.toggle("dark-mode");
+            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #e0e0e0;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #1f1f1f;
+            color: #00bcd4;
+            position: sticky;
+            top: 0;
+        }
+        
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            float: right;
+        }
+        
+        .friend-detail {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .friend-detail-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+        }
+        
+        .friend-description {
+            flex: 1;
+        }
+    </style>
+</body>
+
+</html>
