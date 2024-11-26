@@ -9,12 +9,14 @@
 <body>
     <!-- Header -->
     <header>
+        <a href="amiketti.html" class="back-button">←</a> <!-- Bottone per tornare indietro -->
         <h1>Pippi</h1>
         <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     </header>
 
     <!-- Contenuto principale -->
     <main>
+        <!-- Prima sezione: foto a sinistra, testo a destra -->
         <section class="friend-detail">
             <img src="images/pippi.png" alt="Pippi" class="friend-detail-image">
             <div class="friend-description">
@@ -23,33 +25,43 @@
                 <p class="main-description">
                     È ENORME, la sua trama si divide in: prima e dopo la scoperta della palestra. Ovvero in "Good Peter" e "Evil Peter". E' un esemplare davvero unico in grado di passare fino alle 7 ore giornaliere in palestra. Non apre mai nessun libro ma allo stesso tempo non ha nessun voto rosso, non ha mai soldi e devi pagargli tutto tu ma allo stesso tempo riesce a trovare 50 euro per l'entrata in quella serata 14+.
                 </p>
+            </div>
+        </section>
+
+        <!-- Seconda sezione: testo a sinistra, immagine a destra -->
+        <section class="friend-detail">
+            <div class="friend-description">
                 <p class="main-description">
                     Dopo la scoperta delle 08 la sua vita cambia radicalmente. Nessuna scoperta fu mai così di impatto e immersiva per un ragazzo di questo calibro. Tuttavia, rimane sfortunato in amore nonostante il suo fan club si dica raggiunga i 300 membri. Tutti inferiori ai 15 anni.
-                </p>
-                <p class="main-description">
                     È davvero grosso, non scherzo!
                 </p>
             </div>
+            <img src="images/pippi2.png" alt="Pippi" class="friend-detail-image-right">
         </section>
     </main>
 
     <script>
+        // Funzione per applicare il tema salvato
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+                document.querySelector(".theme-toggle").textContent = "☀️"; // Icona per il tema chiaro
+            } else {
+                document.body.classList.remove("dark-mode");
+                document.querySelector(".theme-toggle").textContent = "🌙"; // Icona per il tema scuro
+            }
+        }
+
+        // Funzione per gestire il cambio tema
         function toggleTheme() {
             const body = document.body;
             const isDarkMode = body.classList.toggle("dark-mode");
             localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-
-            // Cambia i colori del testo e dello sfondo
-            const header = document.querySelector("header");
-            const description = document.querySelector(".friend-description");
-            if (isDarkMode) {
-                header.style.color = "#00bcd4";
-                description.style.color = "#e0e0e0";
-            } else {
-                header.style.color = "#121212";
-                description.style.color = "#000";
-            }
         }
+
+        // Esegui la funzione all'avvio della pagina
+        applySavedTheme();
     </script>
 
     <style>
@@ -69,46 +81,77 @@
         }
 
         header {
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
             background-color: #1f1f1f;
             color: #00bcd4;
             position: sticky;
             top: 0;
+            z-index: 10;
         }
 
-        header.dark-mode {
-            background-color: #e0e0e0;
-            color: #121212;
+        header h1 {
+            flex: 1;
+            text-align: center;
+            margin: 0;
         }
 
+        /* Bottone per tornare indietro */
+        .back-button {
+            position: absolute;
+            left: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            background-color: #1f1f1f;
+            color: #00bcd4;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #00bcd4;
+            color: #1f1f1f;
+        }
+
+        /* Bottone cambio tema */
         .theme-toggle {
             background: transparent;
             border: none;
             color: #fff;
             font-size: 20px;
             cursor: pointer;
-            float: right;
+            position: absolute;
+            right: 20px;
         }
 
-        /* Layout principale */
         .friend-detail {
             display: flex;
             align-items: flex-start;
             gap: 20px;
             padding: 20px;
+            margin-top: 60px;
         }
 
-        /* Immagine */
         .friend-detail-image {
-            width: 40%;
-            max-width: 400px;
+            width: 50%;
+            max-width: 500px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* Descrizione */
+        .friend-detail-image-right {
+            width: 50%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            order: 2;
+        }
+
         .friend-description {
             flex: 1;
             padding-left: 20px;
@@ -117,18 +160,19 @@
         .friend-description h2 {
             margin-top: 0;
             color: #00bcd4;
+            font-size: 2.5em;
         }
 
         .friend-description h3.nickname {
-            font-size: 1.2em;
+            font-size: 1.6em;
             color: #888;
             margin-bottom: 10px;
         }
 
         .friend-description p.main-description {
-            font-size: 1.1em;
+            font-size: 1.4em;
             line-height: 1.8;
-            color: inherit; /* Adatta al tema */
+            color: inherit;
         }
     </style>
 </body>
