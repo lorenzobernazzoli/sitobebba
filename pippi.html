@@ -14,6 +14,76 @@
         <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     </header>
 
+    <!--canzone-->
+    <section class="song-section">
+        <h2>Se fosse una canzone sarebbe:</h2>
+        <div class="player">
+            <div class="player-container">
+                <div class="vinyl">
+                    <img src="images/vinylPandetta.png" alt="Vinile" class="vinyl-image">
+                </div>
+                <div class="controls">
+                    <button class="play-button">▶</button>
+                    <div class="progress-container">
+                        <span class="current-time">0:00</span>
+                        <input type="range" class="progress-bar" value="0" min="0" max="100">
+                        <span class="total-time">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <audio id="audio-player" src="audio/Pistole Nella Fendi.mp3"></audio>
+        </div>
+    </section>
+    
+
+    <script>
+        const audioPlayer = document.getElementById('audio-player');
+        const playButton = document.querySelector('.play-button');
+        const vinylImage = document.querySelector('.vinyl-image');
+        const progressBar = document.querySelector('.progress-bar');
+        const currentTimeEl = document.querySelector('.current-time');
+        const totalTimeEl = document.querySelector('.total-time');
+
+        // Formatta il tempo (secondi -> mm:ss)
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+            return `${minutes}:${secs}`;
+        }
+
+        // Aggiorna il tempo corrente e la barra di progresso
+        audioPlayer.addEventListener('timeupdate', () => {
+            const currentTime = audioPlayer.currentTime;
+            const duration = audioPlayer.duration;
+            progressBar.value = (currentTime / duration) * 100 || 0;
+            currentTimeEl.textContent = formatTime(currentTime);
+        });
+
+        // Aggiorna il tempo totale quando la canzone è caricata
+        audioPlayer.addEventListener('loadedmetadata', () => {
+            totalTimeEl.textContent = formatTime(audioPlayer.duration);
+        });
+
+        // Riproduci o metti in pausa
+        playButton.addEventListener('click', () => {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                vinylImage.classList.add('playing');
+                playButton.textContent = '⏸'; // Cambia l'icona in pausa
+            } else {
+                audioPlayer.pause();
+                vinylImage.classList.remove('playing');
+                playButton.textContent = '▶'; // Cambia l'icona in play
+            }
+        });
+
+        // Cambia il tempo della canzone trascinando la barra di progresso
+        progressBar.addEventListener('input', () => {
+            audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
+        });
+    </script>
+    
+
     <!-- Contenuto principale -->
     <main>
         <!-- Prima sezione: foto a sinistra, testo a destra -->
@@ -23,7 +93,13 @@
                 <h2>Pippi <3</h2>
                 <h3 class="nickname">Peter - Pippi - sbugba - Sbadubi - Pip - Burro - sBURA - PiPPiRipPi - pietrino - pietrone - pie - Buralds - pistolero della noche - palestraBoy</h3>
                 <p class="main-description">
-                    È ENORME, la sua trama si divide in: prima e dopo la scoperta della palestra. Ovvero in "Good Peter" e "Evil Peter". E' un esemplare davvero unico in grado di passare fino alle 7 ore giornaliere in palestra. Non apre mai nessun libro ma allo stesso tempo non ha nessun voto rosso, non ha mai soldi e devi pagargli tutto tu ma allo stesso tempo riesce a trovare 50 euro per l'entrata in quella serata 14+.
+                    È ENORME, la sua trama si divide in: prima e dopo la scoperta della palestra. Ovvero in "Good Peter" e "Evil Peter". 
+                    E' un esemplare davvero unico in grado di passare fino alle 7 ore giornaliere in palestra. Non apre mai nessun libro ma allo 
+                    stesso tempo non ha nessun voto rosso, non ha mai soldi e devi pagargli tutto tu ma allo stesso tempo riesce a trovare 50 euro 
+                    per l'entrata in quella serata 14+. L'esemplare Pippi uscito a pieni voti da un complesso percorso di studi informatico pensa bene 
+                    dopo tanti sforzi per quel diploma di andare a fare il salumiere, i primi mesi però sono duri e il nostro armadio capisce che forse 
+                    non è quello che vorrebbe fare per tutta la sua vita, così decide di dare una svolta al tutto, molla i prosciutti e ora si occupa di
+                    montare le celle frigorifere (sempre per i prosciutti). In pratica non è cambiato una sega ma prende solo più soldi, non male!
                 </p>
             </div>
         </section>
@@ -31,9 +107,18 @@
         <!-- Seconda sezione: testo a sinistra, immagine a destra -->
         <section class="friend-detail">
             <div class="friend-description">
+                <h1><b style="font-size: 40px; color: #d40000;">attenti alla 600 blu</b></h1>
                 <p class="main-description">
-                    Dopo la scoperta delle 08 la sua vita cambia radicalmente. Nessuna scoperta fu mai così di impatto e immersiva per un ragazzo di questo calibro. Tuttavia, rimane sfortunato in amore nonostante il suo fan club si dica raggiunga i 300 membri. Tutti inferiori ai 15 anni.
-                    È davvero grosso, non scherzo!
+                    Dopo la scoperta delle 08 la sua vita cambia radicalmente. Nessuna scoperta fu mai così di impatto e immersiva per un 
+                    ragazzo di questo calibro. Tuttavia, rimane sfortunato in amore nonostante il suo fan club si dica raggiunga i 300 membri. 
+                    Tutti inferiori ai 15 anni. Non è detto che si presenti sempre alle uscite della gang, ma di certo puoi star sicuro che quando
+                    poi si ripresenta è rimasto un minchia come sempre. Il suo corpo è formato al 90% da integratori alimentari e proteine in polvere, 
+                    si dice addirittura che purtroppo in aeroporto non sia possibile lasciarlo passare visto che le polveri sono vietatte sopra ai 350g, e qua
+                    ne abbiamo circa 70kg. E' sculato come un bastardo in ogni ambito della sua vita, così tanto da prendere 18/20 al leggendario scritto 
+                    di sistemi senza mai aver nemmeno tirato fuori dalla plastica il libro, lo posso confermare perchè' poi il libro l'ha venduto a me (è nuovo di zecca!).
+                    Come nella scuola anche con la patente questo stronzo ha sottoscritto il record impiegando 5 mesi per fare tutto e aggiundicandosi il primo posto
+                    nella classifica dei patentati, con la sua 600 blu di fatti scheggia per le vie del west side parmense incutendo paura e timore ai pedoni sulle striscie
+                    e con uno stereo rotto che penzola, ma con niko pandetta a 40 di volume.                    
                 </p>
             </div>
             <img src="images/pippi2.png" alt="Pippi" class="friend-detail-image-right">
@@ -86,7 +171,7 @@
             align-items: center;
             padding: 20px;
             background-color: #1f1f1f;
-            color: #00bcd4;
+            color: #d40000;
             position: sticky;
             top: 0;
             z-index: 10;
@@ -105,7 +190,7 @@
             font-size: 18px;
             text-decoration: none;
             background-color: #1f1f1f;
-            color: #00bcd4;
+            color: #d40000;
             padding: 10px 15px;
             border-radius: 10px;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -159,7 +244,7 @@
 
         .friend-description h2 {
             margin-top: 0;
-            color: #00bcd4;
+            color: #d40000;
             font-size: 2.5em;
         }
 
@@ -174,6 +259,129 @@
             line-height: 1.8;
             color: inherit;
         }
+        .song-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .song-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #0dc72c;
+        }
+
+        .player {
+            display: flex;
+            justify-content: center;
+        }
+
+        .player-container {
+            background: #1f1f1f;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .vinyl {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .vinyl-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: spin 0s linear infinite;
+        }
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .play-button {
+            background-color: #0dc72c;
+            color: #1f1f1f;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 30px;
+        }
+
+        .progress-bar {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: #888;
+            border-radius: 10px;
+            outline: none;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #00bcd4;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .progress-bar::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            background: #00bcd4;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .vinyl-image.playing {
+            animation-duration: 2s;
+        }
+
+
     </style>
 </body>
 </html>
