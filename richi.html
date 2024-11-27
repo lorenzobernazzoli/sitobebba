@@ -14,6 +14,34 @@
         <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     </header>
 
+    <section class="song-section">
+        <h2 class="song-heading">Se fosse una canzone sarebbe:</h2>
+        <div class="player">
+            <div class="player-container">
+                <div class="vinyl">
+                    <img src="images/vinylstarship.png" alt="Vinile" class="vinyl-image">
+                </div>
+                <div class="controls">
+                    <div class="top-row">
+                        <button class="play-button">▶</button>
+                        <h3 class="song-title">Starship - Nicki Minaj</h3>
+                    </div>
+                    <div class="progress-container">
+                        <span class="current-time">0:00</span>
+                        <div class="progress-bar-wrapper">
+                            <input type="range" class="progress-bar" value="0" min="0" max="100">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <span class="total-time">3:30</span>
+                    </div>
+                </div>
+            </div>
+            <audio id="audio-player" src="audio/Starships - Nicki Minaj (Lyrics) 🎵.mp3"></audio>
+        </div>
+    </section>
+    
+
+
     <!-- Contenuto principale -->
     <main>
         <!-- Prima sezione: foto a sinistra, testo a destra -->
@@ -49,30 +77,6 @@
         </section>
     </main>
 
-    <script>
-        // Funzione per applicare il tema salvato
-        function applySavedTheme() {
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "dark") {
-                document.body.classList.add("dark-mode");
-                document.querySelector(".theme-toggle").textContent = "☀️"; // Icona per il tema chiaro
-            } else {
-                document.body.classList.remove("dark-mode");
-                document.querySelector(".theme-toggle").textContent = "🌙"; // Icona per il tema scuro
-            }
-        }
-
-        // Funzione per gestire il cambio tema
-        function toggleTheme() {
-            const body = document.body;
-            const isDarkMode = body.classList.toggle("dark-mode");
-            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-        }
-
-        // Esegui la funzione all'avvio della pagina
-        applySavedTheme();
-    </script>
-
     <style>
         /* Tema generale */
         body {
@@ -95,7 +99,7 @@
             align-items: center;
             padding: 20px;
             background-color: #1f1f1f;
-            color: #00bcd4;
+            color: #f5911e;
             position: sticky;
             top: 0;
             z-index: 10;
@@ -114,7 +118,7 @@
             font-size: 18px;
             text-decoration: none;
             background-color: #1f1f1f;
-            color: #00bcd4;
+            color: #f5911e;
             padding: 10px 15px;
             border-radius: 10px;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -168,7 +172,7 @@
 
         .friend-description h2 {
             margin-top: 0;
-            color: #00bcd4;
+            color: #f5911e;
             font-size: 2.5em;
         }
 
@@ -183,6 +187,202 @@
             line-height: 1.8;
             color: inherit;
         }
+        /* Sezione "Se fosse una canzone sarebbe" */
+        .song-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .song-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #0dc72c;
+        }
+
+        .player {
+            display: flex;
+            justify-content: center;
+        }
+
+        .player-container {
+            background: #1f1f1f;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .vinyl {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .vinyl-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: spin 0s linear infinite;
+        }
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .play-button {
+            background-color: #0dc72c;
+            color: #1f1f1f;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 30px;
+        }
+
+        /* Barra di progresso */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative; /* Necessario per il posizionamento */
+            width: 100%;
+            background: #888; /* Colore di sfondo della barra */
+            border-radius: 10px; /* Arrotontiamo la barra */
+            height: 5px; /* Impostiamo l'altezza della barra */
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px; /* Stessa altezza della barra */
+            border-radius: 10px; /* Arrotontiamo il riempimento */
+            background-color: #00bcd4; /* Colore della barra di avanzamento */
+            z-index: 1; /* Lo mettiamo sopra la barra di sfondo */
+        }
+
+
+
+        /* Barra di progresso (senza sfondo, solo il cursore) */
+        .progress-bar {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: transparent; /* Nasconde lo sfondo */
+            outline: none;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Rimuove il thumb in WebKit */
+            appearance: none;
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
+        }
+
+        .progress-bar::-moz-range-thumb {
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
+        }
+
+
+        /* Posizione dei minutaggi */
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 40px;
+            position: absolute;
+            top: 20px; /* Posizioniamo il testo sopra la barra */
+        }
+
+        .current-time {
+            left: 0; /* A sinistra */
+        }
+
+        .total-time {
+            right: 0; /* A destra */
+        }
+
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .play-button {
+            flex-shrink: 0;
+        }
+
+        .song-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            margin-left: 10px;
+            text-align: left;
+            flex: 1; /* Si espande per occupare spazio */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; /* Taglio del testo lungo */
+        }
+
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .vinyl-image.playing {
+            animation-duration: 2s;
+        }
+
+
     </style>
+    <script src="script/scripts.js"></script>
 </body>
 </html>

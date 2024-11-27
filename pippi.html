@@ -23,10 +23,14 @@
                     <img src="images/vinylPandetta.png" alt="Vinile" class="vinyl-image">
                 </div>
                 <div class="controls">
-                    <button class="play-button">▶</button>
+                    <div class="top-row">
+                        <button class="play-button">▶</button>
+                        <h3 class="song-title">Pistole Nella Fendi - Niko Pandetta</h3>
+                    </div>
                     <div class="progress-container">
                         <span class="current-time">0:00</span>
                         <input type="range" class="progress-bar" value="0" min="0" max="100">
+                        <div class="progress-fill"></div> <!-- Questa è la parte che riempie la barra -->
                         <span class="total-time">0:00</span>
                     </div>
                 </div>
@@ -34,55 +38,6 @@
             <audio id="audio-player" src="audio/Pistole Nella Fendi.mp3"></audio>
         </div>
     </section>
-    
-
-    <script>
-        const audioPlayer = document.getElementById('audio-player');
-        const playButton = document.querySelector('.play-button');
-        const vinylImage = document.querySelector('.vinyl-image');
-        const progressBar = document.querySelector('.progress-bar');
-        const currentTimeEl = document.querySelector('.current-time');
-        const totalTimeEl = document.querySelector('.total-time');
-
-        // Formatta il tempo (secondi -> mm:ss)
-        function formatTime(seconds) {
-            const minutes = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
-            return `${minutes}:${secs}`;
-        }
-
-        // Aggiorna il tempo corrente e la barra di progresso
-        audioPlayer.addEventListener('timeupdate', () => {
-            const currentTime = audioPlayer.currentTime;
-            const duration = audioPlayer.duration;
-            progressBar.value = (currentTime / duration) * 100 || 0;
-            currentTimeEl.textContent = formatTime(currentTime);
-        });
-
-        // Aggiorna il tempo totale quando la canzone è caricata
-        audioPlayer.addEventListener('loadedmetadata', () => {
-            totalTimeEl.textContent = formatTime(audioPlayer.duration);
-        });
-
-        // Riproduci o metti in pausa
-        playButton.addEventListener('click', () => {
-            if (audioPlayer.paused) {
-                audioPlayer.play();
-                vinylImage.classList.add('playing');
-                playButton.textContent = '⏸'; // Cambia l'icona in pausa
-            } else {
-                audioPlayer.pause();
-                vinylImage.classList.remove('playing');
-                playButton.textContent = '▶'; // Cambia l'icona in play
-            }
-        });
-
-        // Cambia il tempo della canzone trascinando la barra di progresso
-        progressBar.addEventListener('input', () => {
-            audioPlayer.currentTime = (progressBar.value / 100) * audioPlayer.duration;
-        });
-    </script>
-    
 
     <!-- Contenuto principale -->
     <main>
@@ -124,30 +79,6 @@
             <img src="images/pippi2.png" alt="Pippi" class="friend-detail-image-right">
         </section>
     </main>
-
-    <script>
-        // Funzione per applicare il tema salvato
-        function applySavedTheme() {
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "dark") {
-                document.body.classList.add("dark-mode");
-                document.querySelector(".theme-toggle").textContent = "☀️"; // Icona per il tema chiaro
-            } else {
-                document.body.classList.remove("dark-mode");
-                document.querySelector(".theme-toggle").textContent = "🌙"; // Icona per il tema scuro
-            }
-        }
-
-        // Funzione per gestire il cambio tema
-        function toggleTheme() {
-            const body = document.body;
-            const isDarkMode = body.classList.toggle("dark-mode");
-            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-        }
-
-        // Esegui la funzione all'avvio della pagina
-        applySavedTheme();
-    </script>
 
     <style>
         /* Tema generale */
@@ -259,6 +190,7 @@
             line-height: 1.8;
             color: inherit;
         }
+        /*sezione canzone*/
         .song-section {
             text-align: center;
             margin: 40px 0;
@@ -338,35 +270,106 @@
             min-width: 30px;
         }
 
+        /* Barra di progresso */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative; /* Necessario per il posizionamento */
+            width: 100%;
+            background: #888; /* Colore di sfondo della barra */
+            border-radius: 10px; /* Arrotontiamo la barra */
+            height: 5px; /* Impostiamo l'altezza della barra */
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px; /* Stessa altezza della barra */
+            border-radius: 10px; /* Arrotontiamo il riempimento */
+            background-color: #00bcd4; /* Colore della barra di avanzamento */
+            z-index: 1; /* Lo mettiamo sopra la barra di sfondo */
+        }
+
+
+
+        /* Barra di progresso (senza sfondo, solo il cursore) */
         .progress-bar {
             -webkit-appearance: none;
             appearance: none;
             width: 100%;
             height: 5px;
-            background: #888;
-            border-radius: 10px;
+            background: transparent; /* Nasconde lo sfondo */
             outline: none;
-            overflow: hidden;
-            cursor: pointer;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 1;
         }
 
         .progress-bar::-webkit-slider-thumb {
-            -webkit-appearance: none;
+            -webkit-appearance: none; /* Rimuove il thumb in WebKit */
             appearance: none;
-            width: 12px;
-            height: 12px;
-            background: #00bcd4;
-            border-radius: 50%;
-            cursor: pointer;
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
         }
 
         .progress-bar::-moz-range-thumb {
-            width: 12px;
-            height: 12px;
-            background: #00bcd4;
-            border-radius: 50%;
-            cursor: pointer;
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
         }
+
+
+        /* Posizione dei minutaggi */
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 40px;
+            position: absolute;
+            top: 20px; /* Posizioniamo il testo sopra la barra */
+        }
+
+        .current-time {
+            left: 0; /* A sinistra */
+        }
+
+        .total-time {
+            right: 0; /* A destra */
+        }
+
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .play-button {
+            flex-shrink: 0;
+        }
+
+        .song-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            margin-left: 10px;
+            text-align: left;
+            flex: 1; /* Si espande per occupare spazio */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; /* Taglio del testo lungo */
+        }
+
+
 
         @keyframes spin {
             0% {
@@ -383,5 +386,6 @@
 
 
     </style>
+    <script src="script/scripts.js"></script>
 </body>
 </html>
