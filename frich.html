@@ -14,6 +14,30 @@
         <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     </header>
 
+    <!--canzone-->
+    <section class="song-section">
+        <h2>Se fosse una canzone sarebbe:</h2>
+        <div class="player">
+            <div class="player-container">
+                <div class="vinyl">
+                    <img src="images/" alt="Vinile" class="vinyl-image">
+                </div>
+                <div class="controls">
+                    <div class="top-row">
+                        <button class="play-button">▶</button>
+                        <h3 class="song-title">non lo so</h3>
+                    </div>
+                    <div class="progress-container">
+                        <span class="current-time">0:00</span>
+                        <input type="range" class="progress-bar" value="0" min="0" max="100">
+                        <div class="progress-fill"></div> <!-- Questa è la parte che riempie la barra -->
+                        <span class="total-time">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <audio id="audio-player" src="audio/"></audio>
+        </div>
+    </section>
     <!-- Contenuto principale -->
     <main>
         <!-- Prima sezione: foto a sinistra, testo a destra -->
@@ -26,6 +50,12 @@
                     ci sarebbero troppe cose da dire, ma così poche allo stesso tempo.
                     È importante affermare che non vi è distinzione tra questo esemplare e l'esemplare "Sofi" nella scheda seguente, sono un'entità unica, ciò che fa uno fa anche l'altro, nello stesso luogo, ora, data e modo in cui lo fa l'altro. Sono dei patatini bubolini, li amo, li adoro e me li mangio.
                     Fu uno dei miei primi amori, anche lui come l'esemplare "Pippi" e "Richi" è uno degli OG.
+                    ha vinto il premio per avere la MAMMA migliore, Barbara sposami ti prego sono amico di tuo figlio solo per te!
+                    Frich è bipolare, non sai mai come lo becchi quel giorno preciso, 
+                    un giorno ti ama l'altro ti odia, è normalità. Un giorno risponde 
+                    subito, l'altro giorno risponde FORSE il giorno dopo. Anche lui 
+                    cacciato dall'ITIS si rifugia nella giungla dell'IPSIA, in cui si 
+                    riesce ad integrare bene e vivere sereno.È un po' il tuttofare della comitiva, se hai problemi alla macchina: chiami Frich. Problemi in casa? Chiami Frich. Problemi coi cani? Chiami Frich. Devi tagliarti i capelli? Chiami Frich! Devi fare un trasloco? Dipingere? Immetterti in tangenziale? Chiami FRICH. Fa tutto, è assurdo.
                 </p>
             </div>
         </section>
@@ -33,8 +63,12 @@
         <!-- Seconda sezione: testo a sinistra, immagine a destra -->
         <section class="friend-detail">
             <div class="friend-description">
+                <h2>Capelli lunghi o corti?</h2>
                 <p class="main-description">
-                    È un po' il tuttofare della comitiva, se hai problemi alla macchina: chiami Frich. Problemi in casa? Chiami Frich. Problemi coi cani? Chiami Frich. Devi tagliarti i capelli? Chiami Frich! Devi fare un trasloco? Dipingere? Immetterti in tangenziale? Chiami FRICH. Fa tutto, è assurdo.
+                    ai tempi d'oro aveva un' ottima chioma lunga e folta, non si sa cosa accadde poi quella sera... ma i suoi capelli non tornarono mai più. Da quel giorno il gruppo si schiera in due Team, chi preferiva il Frich a capello lungo e chi il corto. Sto coglione.
+                    La sua Punto a Benzina la porta come un Ferrari, quando sali in macchina con lui NON tirare mai giù il finestrino, perchè poi non torna più su. Si dice che chi ci abbia provato non sia mai più uscito da quella macchina, le ultime parole furono: "dai lollo non esagerare, è solo un finestrino". Ci mancherai sofi..
+                    bullizza il suo cane piccolo e rispetta i suoi cani grandi, un perfetto esempio di materialista stronzo, complimenti bobbi! 
+                    nel lontano 2023
                 </p>
             </div>
             <img src="images/frich2.png" alt="Frich" class="friend-detail-image-right">
@@ -87,7 +121,7 @@
             align-items: center;
             padding: 20px;
             background-color: #1f1f1f;
-            color: #00bcd4;
+            color: #0e00d4;
             position: sticky;
             top: 0;
             z-index: 10;
@@ -106,7 +140,7 @@
             font-size: 18px;
             text-decoration: none;
             background-color: #1f1f1f;
-            color: #00bcd4;
+            color: #0e00d4;
             padding: 10px 15px;
             border-radius: 10px;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -160,7 +194,7 @@
 
         .friend-description h2 {
             margin-top: 0;
-            color: #00bcd4;
+            color: #0e00d4;
             font-size: 2.5em;
         }
 
@@ -175,6 +209,202 @@
             line-height: 1.8;
             color: inherit;
         }
+        /*sezione canzone*/
+        .song-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .song-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #0dc72c;
+        }
+
+        .player {
+            display: flex;
+            justify-content: center;
+        }
+
+        .player-container {
+            background: #1f1f1f;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .vinyl {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .vinyl-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: spin 0s linear infinite;
+        }
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .play-button {
+            background-color: #0dc72c;
+            color: #1f1f1f;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 30px;
+        }
+
+        /* Barra di progresso */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative; /* Necessario per il posizionamento */
+            width: 100%;
+            background: #888; /* Colore di sfondo della barra */
+            border-radius: 10px; /* Arrotontiamo la barra */
+            height: 5px; /* Impostiamo l'altezza della barra */
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px; /* Stessa altezza della barra */
+            border-radius: 10px; /* Arrotontiamo il riempimento */
+            background-color: #00bcd4; /* Colore della barra di avanzamento */
+            z-index: 1; /* Lo mettiamo sopra la barra di sfondo */
+        }
+
+
+
+        /* Barra di progresso (senza sfondo, solo il cursore) */
+        .progress-bar {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: transparent; /* Nasconde lo sfondo */
+            outline: none;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Rimuove il thumb in WebKit */
+            appearance: none;
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
+        }
+
+        .progress-bar::-moz-range-thumb {
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
+        }
+
+
+        /* Posizione dei minutaggi */
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 40px;
+            position: absolute;
+            top: 20px; /* Posizioniamo il testo sopra la barra */
+        }
+
+        .current-time {
+            left: 0; /* A sinistra */
+        }
+
+        .total-time {
+            right: 0; /* A destra */
+        }
+
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .play-button {
+            flex-shrink: 0;
+        }
+
+        .song-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            margin-left: 10px;
+            text-align: left;
+            flex: 1; /* Si espande per occupare spazio */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; /* Taglio del testo lungo */
+        }
+
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .vinyl-image.playing {
+            animation-duration: 2s;
+        }
+
+
     </style>
+    <script src="script/scripts.js"></script>
 </body>
 </html>
