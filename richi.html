@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Richi</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="amiketti.html" class="back-button">←</a> <!-- Bottone per tornare indietro -->
+        <h1>Richi</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <section class="song-section">
+        <h2 class="song-heading">Se fosse una canzone sarebbe:</h2>
+        <div class="player">
+            <div class="player-container">
+                <div class="vinyl">
+                    <img src="images/vinylstarship.png" alt="Vinile" class="vinyl-image">
+                </div>
+                <div class="controls">
+                    <div class="top-row">
+                        <button class="play-button">▶</button>
+                        <h3 class="song-title">Starship - Nicki Minaj</h3>
+                    </div>
+                    <div class="progress-container">
+                        <span class="current-time">0:00</span>
+                        <div class="progress-bar-wrapper">
+                            <input type="range" class="progress-bar" value="0" min="0" max="100">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <span class="total-time">3:30</span>
+                    </div>
+                </div>
+            </div>
+            <audio id="audio-player" src="audio/Starships - Nicki Minaj (Lyrics) 🎵.mp3"></audio>
+        </div>
+    </section>
+    
+
+
+    <!-- Contenuto principale -->
+    <main>
+        <!-- Prima sezione: foto a sinistra, testo a destra -->
+        <section class="friend-detail">
+            <img src="images/Richi.png" alt="Richi" class="friend-detail-image">
+            <div class="friend-description">
+                <h2>Richi</h2>
+                <h3 class="nickname">Richi, Il Rich, chiastrone, scoreggiaBoy, brufoloBill, Il Maestro, Quello patentato, pariniUser</h3>
+                <p class="main-description">
+                    In ogni modo tu voglia chiamarlo rimane il più grande coglione mai esistito, è inconcepibile come una roba del genere faccia parte del genere umano, 14 mesi di scuola guida e non ha ancora il foglio rosa. 
+                    Cacciato dall'ITIS il nostro eroe si rifugia al Parini scegliendo così la modalità facile e optando per la pacifica e serena opzione dei bonifici istantanei per prendere il diploma. Giuro non c'è molto da dire è solo coglione, non fa un cazzo: si sveglia, fa finta di andare a "scuola", mangia, consuma contenuti in rete e torna a dormire. 
+                    Molti lo credono stupido, ingenuo, brutto, fallito e magari pure disabile non certificato, e hanno ragione.
+                </p>
+                <p class="main-description">
+                    Richi ha una sorella davvero adorabile e perfettamente normale senza problemi psicologici, insomma davvero una famiglia felice e senza problemi! Prossimo ereditario della ChiastraSRL si esercita giornalmente alla consegna dei prosciutti con le macchine su Fortnite. Sto ritardato riesce ad avere 4000+ ore su Fortnite, che sono nulla in confronto ai soldi spesi sempre su quest'ultimo. In pratica il costo di un anno di istruzione al Parini. (Ottima scuola).
+                </p>
+            </div>
+        </section>
+
+        <!-- Seconda sezione: testo a sinistra, immagine a destra -->
+        <section class="friend-detail">
+            <div class="friend-description">
+                <h2>**Anime o videogiochi?**</h2>
+                <p class="main-description">
+                     Questa è la domanda che lo perseguita e a cui non riesce a darsi risposta ogni pomeriggio: come perderà il suo tempo oggi? 
+                    I suoi genitori si dice siano così fieri di lui da piangere se li riconosci per strada come "i genitori di...".
+                </p>
+                
+                <p class="main-description">
+                    Richi ha sempre ragione anche quando spara la più grande cazzata mai esistita, se tutto il mondo è contro di lui allora è il mondo a sbagliarsi, l'opzione che forse abbia un opinione sbagliata non è neanche contemplata nel suo cervello. Proprio come una donna, da cui è spaventato, si offende spesso e ti mette il broncio, peccato che a nessuno freghi un cazzo quindi viene sempre lasciato nell'angoletto a piangere e nessuno va a ritirarlo su. Nonostante i disagi che causi in un uscita, la sua mancanza è la più pesante, visto che riuscirà sempre a farsi bullizzare anche non facendo niente seduti in un bar troveremo il modo di fargli capire quanto è coglione. E' il bullizzato del gruppo, e come ogni bullizzato è quello a cui si vuole più bene. Tranne a scuola.
+                </p>
+            </div>
+            <img src="images/richi2.png" alt="Richi" class="friend-detail-image-right">
+        </section>
+    </main>
+
+    <style>
+        /* Tema generale */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Tema chiaro */
+        .dark-mode {
+            background: #f4f4f4;
+            color: #121212;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #1f1f1f;
+            color: #f5911e;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            flex: 1;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Bottone per tornare indietro */
+        .back-button {
+            position: absolute;
+            left: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            background-color: #1f1f1f;
+            color: #f5911e;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #00bcd4;
+            color: #1f1f1f;
+        }
+
+        /* Bottone cambio tema */
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+        }
+
+        .friend-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        .friend-detail-image {
+            width: 50%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .friend-detail-image-right {
+            width: 50%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            order: 2;
+        }
+
+        .friend-description {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .friend-description h2 {
+            margin-top: 0;
+            color: #f5911e;
+            font-size: 2.5em;
+        }
+
+        .friend-description h3.nickname {
+            font-size: 1.6em;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .friend-description p.main-description {
+            font-size: 1.4em;
+            line-height: 1.8;
+            color: inherit;
+        }
+        /* Sezione "Se fosse una canzone sarebbe" */
+        .song-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .song-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #0dc72c;
+        }
+
+        .player {
+            display: flex;
+            justify-content: center;
+        }
+
+        .player-container {
+            background: #1f1f1f;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .vinyl {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .vinyl-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: spin 0s linear infinite;
+        }
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .play-button {
+            background-color: #0dc72c;
+            color: #1f1f1f;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 30px;
+        }
+
+        /* Barra di progresso */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative; /* Necessario per il posizionamento */
+            width: 100%;
+            background: #888; /* Colore di sfondo della barra */
+            border-radius: 10px; /* Arrotontiamo la barra */
+            height: 5px; /* Impostiamo l'altezza della barra */
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px; /* Stessa altezza della barra */
+            border-radius: 10px; /* Arrotontiamo il riempimento */
+            background-color: #00bcd4; /* Colore della barra di avanzamento */
+            z-index: 1; /* Lo mettiamo sopra la barra di sfondo */
+        }
+
+
+
+        /* Barra di progresso (senza sfondo, solo il cursore) */
+        .progress-bar {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: transparent; /* Nasconde lo sfondo */
+            outline: none;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Rimuove il thumb in WebKit */
+            appearance: none;
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
+        }
+
+        .progress-bar::-moz-range-thumb {
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
+        }
+
+
+        /* Posizione dei minutaggi */
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 40px;
+            position: absolute;
+            top: 20px; /* Posizioniamo il testo sopra la barra */
+        }
+
+        .current-time {
+            left: 0; /* A sinistra */
+        }
+
+        .total-time {
+            right: 0; /* A destra */
+        }
+
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .play-button {
+            flex-shrink: 0;
+        }
+
+        .song-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            margin-left: 10px;
+            text-align: left;
+            flex: 1; /* Si espande per occupare spazio */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; /* Taglio del testo lungo */
+        }
+
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .vinyl-image.playing {
+            animation-duration: 2s;
+        }
+
+
+    </style>
+    <script src="script/scripts.js"></script>
+</body>
+</html>

@@ -9,48 +9,76 @@
 <body>
     <!-- Header -->
     <header>
+        <a href="amiketti.html" class="back-button">←</a> <!-- Bottone per tornare indietro -->
         <h1>Pippi</h1>
         <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     </header>
 
+    <!--canzone-->
+    <section class="song-section">
+        <h2>Se fosse una canzone sarebbe:</h2>
+        <div class="player">
+            <div class="player-container">
+                <div class="vinyl">
+                    <img src="images/vinylPandetta.png" alt="Vinile" class="vinyl-image">
+                </div>
+                <div class="controls">
+                    <div class="top-row">
+                        <button class="play-button">▶</button>
+                        <h3 class="song-title">Pistole Nella Fendi - Niko Pandetta</h3>
+                    </div>
+                    <div class="progress-container">
+                        <span class="current-time">0:00</span>
+                        <input type="range" class="progress-bar" value="0" min="0" max="100">
+                        <div class="progress-fill"></div> <!-- Questa è la parte che riempie la barra -->
+                        <span class="total-time">0:00</span>
+                    </div>
+                </div>
+            </div>
+            <audio id="audio-player" src="audio/Pistole Nella Fendi.mp3"></audio>
+        </div>
+    </section>
+
     <!-- Contenuto principale -->
     <main>
+        <!-- Prima sezione: foto a sinistra, testo a destra -->
         <section class="friend-detail">
-            <img src="images/pippi.png" alt="Pippi" class="friend-detail-image">
+            <img src="images/Pippi.png" alt="Pippi" class="friend-detail-image">
             <div class="friend-description">
                 <h2>Pippi <3</h2>
                 <h3 class="nickname">Peter - Pippi - sbugba - Sbadubi - Pip - Burro - sBURA - PiPPiRipPi - pietrino - pietrone - pie - Buralds - pistolero della noche - palestraBoy</h3>
                 <p class="main-description">
-                    È ENORME, la sua trama si divide in: prima e dopo la scoperta della palestra. Ovvero in "Good Peter" e "Evil Peter". E' un esemplare davvero unico in grado di passare fino alle 7 ore giornaliere in palestra. Non apre mai nessun libro ma allo stesso tempo non ha nessun voto rosso, non ha mai soldi e devi pagargli tutto tu ma allo stesso tempo riesce a trovare 50 euro per l'entrata in quella serata 14+.
-                </p>
-                <p class="main-description">
-                    Dopo la scoperta delle 08 la sua vita cambia radicalmente. Nessuna scoperta fu mai così di impatto e immersiva per un ragazzo di questo calibro. Tuttavia, rimane sfortunato in amore nonostante il suo fan club si dica raggiunga i 300 membri. Tutti inferiori ai 15 anni.
-                </p>
-                <p class="main-description">
-                    È davvero grosso, non scherzo!
+                    È ENORME, la sua trama si divide in: prima e dopo la scoperta della palestra. Ovvero in "Good Peter" e "Evil Peter". 
+                    E' un esemplare davvero unico in grado di passare fino alle 7 ore giornaliere in palestra. Non apre mai nessun libro ma allo 
+                    stesso tempo non ha nessun voto rosso, non ha mai soldi e devi pagargli tutto tu ma allo stesso tempo riesce a trovare 50 euro 
+                    per l'entrata in quella serata 14+. L'esemplare Pippi uscito a pieni voti da un complesso percorso di studi informatico pensa bene 
+                    dopo tanti sforzi per quel diploma di andare a fare il salumiere, i primi mesi però sono duri e il nostro armadio capisce che forse 
+                    non è quello che vorrebbe fare per tutta la sua vita, così decide di dare una svolta al tutto, molla i prosciutti e ora si occupa di
+                    montare le celle frigorifere (sempre per i prosciutti). In pratica non è cambiato una sega ma prende solo più soldi, non male!
                 </p>
             </div>
         </section>
+
+        <!-- Seconda sezione: testo a sinistra, immagine a destra -->
+        <section class="friend-detail">
+            <div class="friend-description">
+                <h1><b style="font-size: 40px; color: #d40000;">attenti alla 600 blu</b></h1>
+                <p class="main-description">
+                    Dopo la scoperta delle 08 la sua vita cambia radicalmente. Nessuna scoperta fu mai così di impatto e immersiva per un 
+                    ragazzo di questo calibro. Tuttavia, rimane sfortunato in amore nonostante il suo fan club si dica raggiunga i 300 membri. 
+                    Tutti inferiori ai 15 anni. Non è detto che si presenti sempre alle uscite della gang, ma di certo puoi star sicuro che quando
+                    poi si ripresenta è rimasto un minchia come sempre. Il suo corpo è formato al 90% da integratori alimentari e proteine in polvere, 
+                    si dice addirittura che purtroppo in aeroporto non sia possibile lasciarlo passare visto che le polveri sono vietatte sopra ai 350g, e qua
+                    ne abbiamo circa 70kg. E' sculato come un bastardo in ogni ambito della sua vita, così tanto da prendere 18/20 al leggendario scritto 
+                    di sistemi senza mai aver nemmeno tirato fuori dalla plastica il libro, lo posso confermare perchè' poi il libro l'ha venduto a me (è nuovo di zecca!).
+                    Come nella scuola anche con la patente questo stronzo ha sottoscritto il record impiegando 5 mesi per fare tutto e aggiundicandosi il primo posto
+                    nella classifica dei patentati, con la sua 600 blu di fatti scheggia per le vie del west side parmense incutendo paura e timore ai pedoni sulle striscie
+                    e con uno stereo rotto che penzola, ma con niko pandetta a 40 di volume.                    
+                </p>
+            </div>
+            <img src="images/pippi2.png" alt="Pippi" class="friend-detail-image-right">
+        </section>
     </main>
-
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            const isDarkMode = body.classList.toggle("dark-mode");
-            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
-
-            // Cambia i colori del testo e dello sfondo
-            const header = document.querySelector("header");
-            const description = document.querySelector(".friend-description");
-            if (isDarkMode) {
-                header.style.color = "#00bcd4";
-                description.style.color = "#e0e0e0";
-            } else {
-                header.style.color = "#121212";
-                description.style.color = "#000";
-            }
-        }
-    </script>
 
     <style>
         /* Tema generale */
@@ -69,46 +97,77 @@
         }
 
         header {
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
             background-color: #1f1f1f;
-            color: #00bcd4;
+            color: #d40000;
             position: sticky;
             top: 0;
+            z-index: 10;
         }
 
-        header.dark-mode {
-            background-color: #e0e0e0;
-            color: #121212;
+        header h1 {
+            flex: 1;
+            text-align: center;
+            margin: 0;
         }
 
+        /* Bottone per tornare indietro */
+        .back-button {
+            position: absolute;
+            left: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            background-color: #1f1f1f;
+            color: #d40000;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #00bcd4;
+            color: #1f1f1f;
+        }
+
+        /* Bottone cambio tema */
         .theme-toggle {
             background: transparent;
             border: none;
             color: #fff;
             font-size: 20px;
             cursor: pointer;
-            float: right;
+            position: absolute;
+            right: 20px;
         }
 
-        /* Layout principale */
         .friend-detail {
             display: flex;
             align-items: flex-start;
             gap: 20px;
             padding: 20px;
+            margin-top: 60px;
         }
 
-        /* Immagine */
         .friend-detail-image {
-            width: 40%;
-            max-width: 400px;
+            width: 50%;
+            max-width: 500px;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* Descrizione */
+        .friend-detail-image-right {
+            width: 50%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            order: 2;
+        }
+
         .friend-description {
             flex: 1;
             padding-left: 20px;
@@ -116,20 +175,217 @@
 
         .friend-description h2 {
             margin-top: 0;
-            color: #00bcd4;
+            color: #d40000;
+            font-size: 2.5em;
         }
 
         .friend-description h3.nickname {
-            font-size: 1.2em;
+            font-size: 1.6em;
             color: #888;
             margin-bottom: 10px;
         }
 
         .friend-description p.main-description {
-            font-size: 1.1em;
+            font-size: 1.4em;
             line-height: 1.8;
-            color: inherit; /* Adatta al tema */
+            color: inherit;
         }
+        /*sezione canzone*/
+        .song-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .song-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #0dc72c;
+        }
+
+        .player {
+            display: flex;
+            justify-content: center;
+        }
+
+        .player-container {
+            background: #1f1f1f;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .vinyl {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .vinyl-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: spin 0s linear infinite;
+        }
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .play-button {
+            background-color: #0dc72c;
+            color: #1f1f1f;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 30px;
+        }
+
+        /* Barra di progresso */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative; /* Necessario per il posizionamento */
+            width: 100%;
+            background: #888; /* Colore di sfondo della barra */
+            border-radius: 10px; /* Arrotontiamo la barra */
+            height: 5px; /* Impostiamo l'altezza della barra */
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px; /* Stessa altezza della barra */
+            border-radius: 10px; /* Arrotontiamo il riempimento */
+            background-color: #00bcd4; /* Colore della barra di avanzamento */
+            z-index: 1; /* Lo mettiamo sopra la barra di sfondo */
+        }
+
+
+
+        /* Barra di progresso (senza sfondo, solo il cursore) */
+        .progress-bar {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: transparent; /* Nasconde lo sfondo */
+            outline: none;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Rimuove il thumb in WebKit */
+            appearance: none;
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
+        }
+
+        .progress-bar::-moz-range-thumb {
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
+        }
+
+
+        /* Posizione dei minutaggi */
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 40px;
+            position: absolute;
+            top: 20px; /* Posizioniamo il testo sopra la barra */
+        }
+
+        .current-time {
+            left: 0; /* A sinistra */
+        }
+
+        .total-time {
+            right: 0; /* A destra */
+        }
+
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .play-button {
+            flex-shrink: 0;
+        }
+
+        .song-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            margin-left: 10px;
+            text-align: left;
+            flex: 1; /* Si espande per occupare spazio */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; /* Taglio del testo lungo */
+        }
+
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .vinyl-image.playing {
+            animation-duration: 2s;
+        }
+
+
     </style>
+    <script src="script/scripts.js"></script>
 </body>
 </html>

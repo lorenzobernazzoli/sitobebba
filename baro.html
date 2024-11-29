@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="amiketti.html" class="back-button">←</a> <!-- Bottone per tornare indietro -->
+        <h1>Baro</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+           <!--canzone-->
+           <section class="song-section">
+            <h2>Se fosse una canzone sarebbe:</h2>
+            <div class="player">
+                <div class="player-container">
+                    <div class="vinyl">
+                        <img src="images/vinylPaky.png" alt="Vinile" class="vinyl-image">
+                    </div>
+                    <div class="controls">
+                        <div class="top-row">
+                            <button class="play-button">▶</button>
+                            <h3 class="song-title">Auto tedesca - Paky</h3>
+                        </div>
+                        <div class="progress-container">
+                            <span class="current-time">0:00</span>
+                            <input type="range" class="progress-bar" value="0" min="0" max="100">
+                            <div class="progress-fill"></div> <!-- Questa è la parte che riempie la barra -->
+                            <span class="total-time">0:00</span>
+                        </div>
+                    </div>
+                </div>
+                <audio id="audio-player" src="audio/Auto tedesca.mp3"></audio>
+            </div>
+        </section>
+    
+
+    <!-- Contenuto principale -->
+    <main>
+        <!-- Prima sezione: foto a sinistra, testo a destra -->
+        <section class="friend-detail">
+            <img src="images/Baro.png" alt="Baro" class="friend-detail-image">
+            <div class="friend-description">
+                <h2>Baro</h2>
+                <h3 class="nickname">Baro - sbaroz, fine</h3>
+                <p class="main-description">
+                    Non si sa neanche quale sia il suo nome, è conosciuto solo e solamente come "Baro". Anche lui è un gran bel coglione iperattivo, gli piace molto fare bordello e farlo gli riesce proprio bene! 
+                    Assieme all'esemplare di "Simo" vivono ogni giorno come se non avessero dei genitori a casa che li aspettano, ogni idea che ha uno ci sarà l'altro a condividerla e soddisfarla.
+                </p>
+                <p class="main-description">
+                    Questo tipo di esemplare non si sa bene come, ma possiede all'interno ogni tipo di conoscenza su ogni ambito del nostro universo. Quando nel gruppo si ha un dubbio teorico di ogni specie si chiede a Baro, è importante nonostante ciò controllare la risposta dato che, molto spesso, è una cagata.
+                </p>
+            </div>
+        </section>
+
+        <!-- Seconda sezione: testo a sinistra, immagine a destra -->
+        <section class="friend-detail">
+            <div class="friend-description">
+                <p class="main-description">
+                    A bordo della sua Yaris bruciata, sfreccia per le vie di Collecchio-Sala a velocità mai viste dall'essere umano. Chi sale in macchina con lui e ci fa l'abitudine riesce a sconfiggere ogni paura legata ai mezzi di trasporto, 
+                    anche la paura degli aerei è nulla in confronto alla Yaris Barozziana.
+                </p>
+                <p class="main-description">
+                    Col suo metro e ottanta sto stronzo potrebbe probabilmente farsele tutte, ma troppo coglione per capirlo si impunta solamente con delle giocate impossibili, o illegali.
+                </p>
+                <p class="main-description">
+                    Grazie alla sua immensa conoscenza ha avuto una carriera scolastica invidiabile ed è in attesa costante sul divano dell'inizio dell'università, ancora incosciente del fatto che probabilmente è già iniziata, ma non è capace di usare il sito per controllare.Famoso cantante, scrisse una canzone assieme a Simo che divenne una vera e propria hit, "Giovane Barozzi". Ad oggi ha più di 10k ascolti, tutti nostri.
+                    Ha comprato una pistola solo perché Simo gli ha detto sarebbe stato divertente.
+                </p>
+            </div>
+            <img src="images/baro2.png" alt="Baro" class="friend-detail-image-right">
+        </section>
+    </main>
+
+    <script>
+        // Funzione per applicare il tema salvato
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+                document.querySelector(".theme-toggle").textContent = "☀️"; // Icona per il tema chiaro
+            } else {
+                document.body.classList.remove("dark-mode");
+                document.querySelector(".theme-toggle").textContent = "🌙"; // Icona per il tema scuro
+            }
+        }
+
+        // Funzione per gestire il cambio tema
+        function toggleTheme() {
+            const body = document.body;
+            const isDarkMode = body.classList.toggle("dark-mode");
+            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+        }
+
+        // Esegui la funzione all'avvio della pagina
+        applySavedTheme();
+    </script>
+
+    <style>
+        /* Tema generale */
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        /* Tema chiaro */
+        .dark-mode {
+            background: #f4f4f4;
+            color: #121212;
+        }
+
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #1f1f1f;
+            color:  #939b9c;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            flex: 1;
+            text-align: center;
+            margin: 0;
+        }
+
+        /* Bottone per tornare indietro */
+        .back-button {
+            position: absolute;
+            left: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            background-color: #1f1f1f;
+            color: #939b9c;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #00bcd4;
+            color: #1f1f1f;
+        }
+
+        /* Bottone cambio tema */
+        .theme-toggle {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+        }
+
+        .friend-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        .friend-detail-image {
+            width: 50%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .friend-detail-image-right {
+            width: 50%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            order: 2;
+        }
+
+        .friend-description {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        .friend-description h2 {
+            margin-top: 0;
+            color: #939b9c;
+            font-size: 2.5em;
+        }
+
+        .friend-description h3.nickname {
+            font-size: 1.6em;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .friend-description p.main-description {
+            font-size: 1.4em;
+            line-height: 1.8;
+            color: inherit;
+        }
+                /*sezione canzone*/
+                .song-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .song-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #0dc72c;
+        }
+
+        .player {
+            display: flex;
+            justify-content: center;
+        }
+
+        .player-container {
+            background: #1f1f1f;
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .vinyl {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .vinyl-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            animation: spin 0s linear infinite;
+        }
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .play-button {
+            background-color: #0dc72c;
+            color: #1f1f1f;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 30px;
+        }
+
+        /* Barra di progresso */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative; /* Necessario per il posizionamento */
+            width: 100%;
+            background: #888; /* Colore di sfondo della barra */
+            border-radius: 10px; /* Arrotontiamo la barra */
+            height: 5px; /* Impostiamo l'altezza della barra */
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px; /* Stessa altezza della barra */
+            border-radius: 10px; /* Arrotontiamo il riempimento */
+            background-color: #00bcd4; /* Colore della barra di avanzamento */
+            z-index: 1; /* Lo mettiamo sopra la barra di sfondo */
+        }
+
+
+
+        /* Barra di progresso (senza sfondo, solo il cursore) */
+        .progress-bar {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 5px;
+            background: transparent; /* Nasconde lo sfondo */
+            outline: none;
+            border-radius: 10px;
+            position: absolute;
+            z-index: 1;
+        }
+
+        .progress-bar::-webkit-slider-thumb {
+            -webkit-appearance: none; /* Rimuove il thumb in WebKit */
+            appearance: none;
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
+        }
+
+        .progress-bar::-moz-range-thumb {
+            width: 0;
+            height: 0;
+            background: transparent; /* Nasconde il thumb */
+        }
+
+
+        /* Posizione dei minutaggi */
+        .current-time, .total-time {
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            min-width: 40px;
+            position: absolute;
+            top: 20px; /* Posizioniamo il testo sopra la barra */
+        }
+
+        .current-time {
+            left: 0; /* A sinistra */
+        }
+
+        .total-time {
+            right: 0; /* A destra */
+        }
+
+
+        .controls {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .play-button {
+            flex-shrink: 0;
+        }
+
+        .song-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #e0e0e0;
+            margin-left: 10px;
+            text-align: left;
+            flex: 1; /* Si espande per occupare spazio */
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis; /* Taglio del testo lungo */
+        }
+
+
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .vinyl-image.playing {
+            animation-duration: 2s;
+        }
+    </style>
+    <script src="script/scripts.js"></script>
+</body>
+</html>
