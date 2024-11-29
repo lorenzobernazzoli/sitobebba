@@ -403,6 +403,152 @@
             animation-duration: 2s;
         }
 
+                /* Media Query per dispositivi con larghezza max di 768px (tablet e smartphone) */
+@media (max-width: 768px) {
+
+/* Header */
+header {
+    display: flex;
+    justify-content: center; /* Centra gli elementi orizzontalmente */
+    align-items: center;
+    padding: 20px;
+    background-color: #1f1f1f;
+    color: blue;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    text-align: center; /* Assicura che il testo sia centrato */
+    margin: 0;
+}
+
+/* Sezione della canzone */
+.song-section {
+    margin: 20px 0;
+}
+
+.player-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    width: 100%;
+}
+
+.vinyl {
+    width: 80px;
+    height: 80px;
+}
+
+.controls {
+    width: 100%;
+    text-align: center;
+}
+
+.progress-container {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.play-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+}
+
+.song-title {
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Dettagli amici */
+.friend-detail {
+    flex-direction: column;
+    padding: 15px;
+}
+
+.friend-detail-image, .friend-detail-image-right {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.friend-description {
+    padding-left: 0;
+    padding-top: 15px;
+}
+
+.friend-description h2 {
+    font-size: 2rem;
+}
+
+.friend-description h3.nickname {
+    font-size: 1.4rem;
+}
+
+.friend-description p.main-description {
+    font-size: 1.2rem;
+}
+
+/* Ridurre la dimensione del testo per le descrizioni sui dispositivi più piccoli */
+.friend-description p.main-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+}
+
+/* Media Query per dispositivi con larghezza max di 480px (smartphone più piccoli) */
+@media (max-width: 480px) {
+/* Header */
+header h1 {
+    font-size: 1.6rem;
+}
+
+.theme-toggle {
+    font-size: 18px;
+}
+
+/* Sezione della canzone */
+.song-section h2 {
+    font-size: 1.5rem;
+}
+
+.player-container {
+    width: 100%;
+    padding: 10px;
+}
+
+.vinyl {
+    width: 70px;
+    height: 70px;
+}
+
+.play-button {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+}
+
+.song-title {
+    font-size: 0.9rem;
+}
+
+/* Dettagli amici */
+.friend-description h2 {
+    font-size: 1.8rem;
+}
+
+.friend-description h3.nickname {
+    font-size: 1.3rem;
+}
+
+.friend-description p.main-description {
+    font-size: 1.1rem;
+}
+}
 
     </style>
     <script src="script/scripts.js"></script>
