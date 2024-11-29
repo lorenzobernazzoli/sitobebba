@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progetti - Sito Bebba</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Stile generico */
+        
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f4f8;
+            color: #333;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        /* Header */
+        
+        header {
+            background: #1f1f1f;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #444;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        header .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+        
+        header .theme-toggle {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        /* Sezione progetti */
+        
+        .projects-section {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .projects-section h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        
+        .project {
+            margin-bottom: 30px;
+        }
+        
+        .project img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .project h3 {
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+        
+        .project p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .project a {
+            display: inline-block;
+            background: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .project a:hover {
+            background: #0056b3;
+        }
+        /* Bottone GitHub */
+        
+        .github-button {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .github-button:hover {
+            background: #555;
+        }
+        /* Tema scuro */
+        
+        body.dark-mode {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .projects-section {
+            background: #1f1f1f;
+        }
+        
+        body.dark-mode header {
+            border-bottom: 2px solid #555;
+        }
+        
+        body.dark-mode .project a {
+            background: #007bff;
+        }
+        
+        body.dark-mode .project a:hover {
+            background: #0056b3;
+        }
+        
+        body.dark-mode .github-button {
+            background: #444;
+        }
+        
+        body.dark-mode .github-button:hover {
+            background: #666;
+        }
+        
+        .richi-image {
+            width: 800px;
+            height: 400px;
+            object-fit: cover;
+            /* Taglia l'immagine mantenendo le proporzioni */
+            object-position: center;
+            /* Centra l'immagine tagliata (opzionale) */
+            object-position: 50% 35%;
+            /* Sposta il focus verso l'alto */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="menu-icon" onclick="window.location.href='home.html'">
+            &#8592;
+        </div>
+        <h1>Progetti</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <!-- Corpo della pagina -->
+    <main>
+        <section class="projects-section">
+            <h2>I miei progetti</h2>
+
+            <!-- Progetto 1 -->
+            <div class="project">
+                <img src="images/fotosito.png" alt="Immagine Progetto 1">
+                <h3>Progetto 1: Questo sito</h3>
+                <p>
+                    probabilmente la cosa piu seria e vicina a un progetto che ho mai fatto. Pensa te.
+                </p>
+                <a href="https://github.com/lorenzobernazzoli/sitobebba" target="_blank">Vai al progetto su GitHub</a>
+            </div>
+
+            <!-- Progetto 2 -->
+            <div class="project">
+                <img class="richi-image" src="images/richiGioco.jpg" alt="Immagine Progetto 2">
+                <h3>Progetto 2: Gioco su richi</h3>
+                <p>
+                    Una volta feci un gioco su richi con Unity, poi mi son rotto il cazzo.
+                </p>
+                <a href="https://github.com/tuo_username/progetto2" target="_blank">Vai al progetto su GitHub</a>
+            </div>
+
+            <!-- Link al profilo GitHub -->
+            <a href="https://github.com/lorenzobernazzoli" target="_blank" class="github-button">
+                Vai al mio GitHub
+            </a>
+            <p>trovi poco</p>
+        </section>
+    </main>
+
+    <script>
+        // Funzione per gestire il tema
+        function toggleTheme() {
+            const body = document.body;
+            const isDarkMode = body.classList.toggle("dark-mode");
+            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            updateToggleIcon(isDarkMode);
+        }
+
+        function updateToggleIcon(isDarkMode) {
+            const toggleButton = document.querySelector(".theme-toggle");
+            toggleButton.textContent = isDarkMode ? "☀️" : "🌙";
+        }
+
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+                updateToggleIcon(true);
+            } else {
+                updateToggleIcon(false);
+            }
+        }
+
+        applySavedTheme();
+    </script>
+</body>
+
+</html>

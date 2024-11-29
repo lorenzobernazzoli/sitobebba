@@ -6,6 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Me - Sito Bebba</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Stile generico */
+        
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f4f8;
+            color: #333;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        /* Header */
+        
+        header {
+            background: #1f1f1f;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #444;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        header .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+        
+        header .theme-toggle {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        /* Sezione principale */
+        
+        .me-section {
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .me-section img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .me-section h2,
+        .me-section h3 {
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        
+        .me-section p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .me-section ul {
+            padding-left: 20px;
+            list-style: disc;
+            margin-bottom: 20px;
+        }
+        
+        .me-section ul li {
+            margin-bottom: 10px;
+        }
+        /* Tema scuro */
+        
+        body.dark-mode {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .me-section {
+            background: #1f1f1f;
+        }
+        
+        body.dark-mode header {
+            border-bottom: 2px solid #555;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,19 +115,21 @@
     <main>
         <section class="me-section">
             <h2>Chi sono</h2>
+            <img src="https://via.placeholder.com/800x400" alt="Immagine di chi sono">
             <p>
                 Il tempo libero lo passo con i miei amichetti del cazzo che approfondisco qui insieme alla mia vita, sti ritardati.
             </p>
             <p>
-                Aiutatemi per favore<br> Mi piace piacere, vestirmi da gay e far pensare alle madri in giro: "menomale che non è figlio mio".<br> Sarei pieno di tattoo ma mamma non vuole mannaggia al cazzo.
+                Mi piace vestirmi e far pensare alle madri in giro: "menomale che non è figlio mio".<br> Sarei pieno di tattoo ma mamma non vuole mannaggia al cazzo.
             </p>
             <p>
                 Giuro che sono ambizioso e maturo ma l'altra personalità vince sempre.<br> Amo spendere soldi e pentirmene, le scarpe, i pantaloni con la zampa da femmina e ho paura delle donne!
             </p>
 
             <h3>Amo il mio cane</h3>
+            <img src="https://via.placeholder.com/600x300" alt="Immagine del cane">
             <p>
-                Amo ancora di più il mio canino patatino e non pensate di poter diventare ad essere più importanti di lei per me, non accadrà mai.
+                questo è quel topo bastardo che mi scrocca cibo vitto e alloggio da 12 anni e che mi ricompensa con stronzi kilometrici
             </p>
 
             <h3>Requisiti per parlarmi</h3>
@@ -59,13 +154,11 @@
             updateToggleIcon(isDarkMode);
         }
 
-        // Aggiorna l'icona del bottone in base al tema
         function updateToggleIcon(isDarkMode) {
             const toggleButton = document.querySelector(".theme-toggle");
             toggleButton.textContent = isDarkMode ? "☀️" : "🌙";
         }
 
-        // Applica il tema salvato
         function applySavedTheme() {
             const savedTheme = localStorage.getItem("theme");
             if (savedTheme === "dark") {
@@ -76,94 +169,8 @@
             }
         }
 
-        // Applica il tema salvato all'avvio
         applySavedTheme();
     </script>
-
-    <style>
-        /* Tema generico */
-        
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-        /* Header sempre scuro */
-        
-        header {
-            background: #1f1f1f;
-            color: #e0e0e0;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333;
-        }
-        
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-        }
-        
-        header .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-            color: #e0e0e0;
-        }
-        
-        header .theme-toggle {
-            background: none;
-            border: none;
-            color: #e0e0e0;
-            font-size: 18px;
-            cursor: pointer;
-        }
-        /* Sezione Me */
-        
-        .me-section {
-            margin: 20px auto;
-            padding: 20px;
-            max-width: 800px;
-            border-radius: 15px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-        }
-        /* Stili per i titoli */
-        
-        .me-section h2,
-        .me-section h3 {
-            color: #00bcd4;
-        }
-        /* Stili per lista */
-        
-        .me-section ul {
-            padding-left: 20px;
-        }
-        
-        .me-section ul li {
-            margin-bottom: 10px;
-        }
-        /* Tema chiaro */
-        
-        body:not(.dark-mode) {
-            background: #ffffff;
-            color: #333;
-        }
-        
-        body:not(.dark-mode) .me-section {
-            background: #f5f5f5;
-        }
-        /* Tema scuro */
-        
-        body.dark-mode {
-            background: #121212;
-            color: #e0e0e0;
-        }
-        
-        body.dark-mode .me-section {
-            background: #1f1f1f;
-        }
-    </style>
 </body>
 
 </html>

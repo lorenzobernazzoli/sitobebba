@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Armadio - Sito Bebba</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Stile generico */
+        
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f7f7f7;
+            color: #333;
+        }
+        /* Header */
+        
+        header {
+            background: #1f1f1f;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #444;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        
+        header .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff;
+        }
+        
+        header .theme-toggle {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        /* Griglia prodotti */
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .product-name {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 0;
+            color: #333;
+        }
+        /* Tema scuro */
+        
+        body.dark-mode {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .product-card {
+            background: #1f1f1f;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="menu-icon" onclick="window.location.href='home.html'">
+            &#8592;
+        </div>
+        <h1>Armadio</h1>
+        <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+    </header>
+
+    <p>
+        mi piacciono i vestiti se non l'hai capito quindi beccati i miei pezzi migliori!
+    </p>
+
+    <!-- Corpo della pagina -->
+    <main>
+        <section class="products-grid">
+            <!-- Prodotto 1 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 1">
+                <div class="product-name">Prodotto 1</div>
+            </div>
+
+            <!-- Prodotto 2 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 2">
+                <div class="product-name">Prodotto 2</div>
+            </div>
+
+            <!-- Prodotto 3 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 3">
+                <div class="product-name">Prodotto 3</div>
+            </div>
+
+            <!-- Prodotto 4 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 4">
+                <div class="product-name">Prodotto 4</div>
+            </div>
+
+            <!-- Prodotto 5 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 5">
+                <div class="product-name">Prodotto 5</div>
+            </div>
+
+            <!-- Prodotto 6 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 6">
+                <div class="product-name">Prodotto 6</div>
+            </div>
+
+            <!-- Prodotto 7 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 7">
+                <div class="product-name">Prodotto 7</div>
+            </div>
+
+            <!-- Prodotto 8 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 8">
+                <div class="product-name">Prodotto 8</div>
+            </div>
+
+            <!-- Prodotto 9 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 9">
+                <div class="product-name">Prodotto 9</div>
+            </div>
+
+            <!-- Prodotto 10 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 10">
+                <div class="product-name">Prodotto 10</div>
+            </div>
+
+            <!-- Prodotto 11 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 11">
+                <div class="product-name">Prodotto 11</div>
+            </div>
+
+            <!-- Prodotto 12 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 12">
+                <div class="product-name">Prodotto 12</div>
+            </div>
+
+            <!-- Prodotto 13 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 13">
+                <div class="product-name">Prodotto 13</div>
+            </div>
+
+            <!-- Prodotto 14 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 14">
+                <div class="product-name">Prodotto 14</div>
+            </div>
+
+            <!-- Prodotto 15 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 15">
+                <div class="product-name">Prodotto 15</div>
+            </div>
+
+            <!-- Prodotto 16 -->
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x200" alt="Prodotto 16">
+                <div class="product-name">Prodotto 16</div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Funzione per gestire il tema
+        function toggleTheme() {
+            const body = document.body;
+            const isDarkMode = body.classList.toggle("dark-mode");
+            localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+            updateToggleIcon(isDarkMode);
+        }
+
+        function updateToggleIcon(isDarkMode) {
+            const toggleButton = document.querySelector(".theme-toggle");
+            toggleButton.textContent = isDarkMode ? "☀️" : "🌙";
+        }
+
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-mode");
+                updateToggleIcon(true);
+            } else {
+                updateToggleIcon(false);
+            }
+        }
+
+        applySavedTheme();
+    </script>
+</body>
+
+</html>
