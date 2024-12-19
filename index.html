@@ -39,8 +39,8 @@
     </main>
 
     <script>
-        // Hash della password corretta (usa https://www.md5hashgenerator.com per calcolare il tuo hash)
-        const CORRECT_PASSWORD_HASH = "4e3c5f7986ff29364209827f0218d7db"; // Inserisci qui la tua password hashata
+        // Hash della password
+        const CORRECT_PASSWORD_HASH = "4e3c5f7986ff29364209827f0218d7db"; //password hashata
 
         let attempts = 0; // Conta i tentativi di login
 
@@ -58,7 +58,7 @@
             const loginContainer = document.getElementById("login-container");
             const lockSection = document.getElementById("lock-section");
 
-            // Calcola l'hash della password inserita
+            // dai oh non fare il furbo
             const passwordHash = CryptoJS.MD5(passwordInput).toString();
 
             if (passwordHash === CORRECT_PASSWORD_HASH) {
